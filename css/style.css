@@ -1,0 +1,8 @@
+#block_countries_form ul.options li input {
+  margin-right: 2px;
+}
+#block_countries_form ul.options li {
+  float: left;
+  width: 240px;
+  margin-right: 10px;
+}
