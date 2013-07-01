@@ -26,7 +26,7 @@ include_once("get-country-name.php");
 
 
 function are_admin_block_country_dependencies_installed() {
-  return is_plugin_active("tom-m8te/tom-m8te.php") && is_plugin_active("jquery-ui-theme/jquery-ui-theme.php");
+  return is_plugin_active("tom-m8te/tom-m8te.php");
 }
 
 add_action( 'admin_notices', 'admin_block_country_notice_notice' );
