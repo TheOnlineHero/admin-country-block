@@ -75,15 +75,17 @@ function register_admin_block_country_install_dependency_settings() {
 }
 
 
-add_action( 'admin_init', 'register_admin_block_country_block_by_country' );
+add_action( 'init', 'register_admin_block_country_block_by_country' );
 function register_admin_block_country_block_by_country() {
   if (are_admin_block_country_dependencies_installed()) {
-    $my_country = admin_block_country_get_country_from_ip($_SERVER['REMOTE_ADDR']);
-    foreach(admin_block_country_current_countries_blocked() as $country) {
-      if ($country == $my_country) {
-        exit;
-      }
-    } 
+		if (preg_match("/wp-login|wp-admin/", tom_get_current_url())) {
+	    $my_country = admin_block_country_get_country_from_ip($_SERVER['REMOTE_ADDR']);
+	    foreach(admin_block_country_current_countries_blocked() as $country) {
+	      if ($country == $my_country) {
+	        exit;
+	      }
+	    }
+		} 
   }
 }
 
@@ -109,6 +111,7 @@ function admin_block_country_initial_page() {
   
     if ($_POST["action"] == "Block") {
       update_option("admin_block_country_list", tom_get_query_string_value("block_countries"));
+			echo("<div class='updated below-h2'><p>Admin Block Was Successful.</p></div>");
     }
     foreach(admin_block_country_current_countries_blocked() as $country) {
       $i=0;
@@ -144,6 +147,7 @@ function admin_block_country_initial_page() {
   
     <?php
   }
+	tom_add_social_share_links("http://wordpress.org/extend/plugins/admin-block-country/");
 }
 
 function admin_block_country_current_countries_blocked() {

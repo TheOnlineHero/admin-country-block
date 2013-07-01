@@ -6,4 +6,5 @@ jQuery(function() {
       jQuery("ul.options input:not(#block_countries_block_countries_select_all)").removeAttr("checked");
     }    
   });
+	jQuery("#block_countries_block_countries_select_all").parent().css("float", "none");
 });
