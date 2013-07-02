@@ -131,7 +131,7 @@ function admin_block_country_initial_page() {
       $my_country = admin_block_country_get_country_from_ip($_SERVER['REMOTE_ADDR']); ?>
       <p>Please choose which countries you wish to exclude from accessing the admin site.</p>
       <?php if ($my_country != "ZZ") { ?>
-            <p>You cannot block your own country, for your own protect. <?php echo($geoipcountry[$my_country]); ?> has been taken off the list.</p>
+            <p>You cannot block your own country, for your own protection. <?php echo($geoipcountry[$my_country]); ?> has been taken off the list.</p>
       <?php } ?>
       <form action="" method="post" id="block_countries_form">
         <fieldset>
