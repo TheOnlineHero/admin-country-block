@@ -1,3 +1,9 @@
+#block_countries_form ul.options {
+	background: #ddd;
+	padding: 10px;
+	height: 300px;
+	overflow: auto;
+}
 #block_countries_form ul.options li input {
   margin-right: 2px;
 }
