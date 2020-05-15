@@ -33,36 +33,40 @@ define("FULL_RECORD_LENGTH",50);
 require_once 'geoip.inc';
 require_once 'geoipregionvars.php';
 
-class geoiprecord {
-  var $country_code;
-  var $country_code3;
-  var $country_name;
-  var $region;
-  var $city;
-  var $postal_code;
-  var $latitude;
-  var $longitude;
-  var $area_code;
-  var $dma_code;   # metro and dma code are the same. use metro_code
-  var $metro_code;
-  var $continent_code;
+if (!class_exists('geoiprecord')) {
+	class geoiprecord {
+		var $country_code;
+		var $country_code3;
+		var $country_name;
+		var $region;
+		var $city;
+		var $postal_code;
+		var $latitude;
+		var $longitude;
+		var $area_code;
+		var $dma_code;   # metro and dma code are the same. use metro_code
+		var $metro_code;
+		var $continent_code;
+	}
 }
-
-class geoipdnsrecord {
-  var $country_code;
-  var $country_code3;
-  var $country_name;
-  var $region;
-  var $regionname;
-  var $city;
-  var $postal_code;
-  var $latitude;
-  var $longitude;
-  var $areacode;
-  var $dmacode;
-  var $isp;
-  var $org;
-  var $metrocode;
+if (!class_exists('geoipdnsrecord')) {
+	class geoipdnsrecord
+	{
+		var $country_code;
+		var $country_code3;
+		var $country_name;
+		var $region;
+		var $regionname;
+		var $city;
+		var $postal_code;
+		var $latitude;
+		var $longitude;
+		var $areacode;
+		var $dmacode;
+		var $isp;
+		var $org;
+		var $metrocode;
+	}
 }
 
 function getrecordwithdnsservice($str){

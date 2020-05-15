@@ -1,10 +1,10 @@
 === Admin Block Country ===
-Contributors: MMDeveloper, The Marketing Mix Osborne Park Perth
+Contributors: MMDeveloper
 Donate link: 
 Tags: security, block, country
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 6.0
+Tested up to: 5.4
+Stable tag: 7.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,11 +14,9 @@ Block access to your admin pages by country.
 
 Easy to use plugin, that blocks access to your wp-admin area by country. Uses geoip-api-php as the library to work out the visitor's country.
 
-Built by The Marketing Mix Perth: http://www.marketingmix.com.au
-
 == Installation ==
 
-1) Install WordPress 4.0 or higher
+1) Install WordPress 5.4 or higher
 
 2) Download the latest from:
 
@@ -29,10 +27,35 @@ http://wordpress.org/extend/plugins/admin-block-country
 4) Activate the plugin.
 
 
-Built by The Marketing Mix Perth: http://www.marketingmix.com.au
-
-
 == Changelog ==
+
+= 7.1.2 =
+
+* Fixed more bugs caused by debug=true
+
+= 7.1.1 =
+
+* Fixed more bugs caused by debug=true
+
+= 7.1 =
+
+* Fixed up errors from debug=true.
+
+= 7.0 =
+
+* Links up to GeoCity 2.0
+
+= 6.3 =
+
+* Fixed the IP services. Removed IP service list and set it to only use ipcountry.marketingmix.com.au.
+
+= 6.2 =
+
+* Fixed security issue which blocked requests to ipcountry.marketingmix.com.au.
+
+= 6.1 =
+
+* Improved code.
 
 = 6.0 =
 
@@ -64,7 +87,7 @@ Built by The Marketing Mix Perth: http://www.marketingmix.com.au
 
 = 3.0 =
 
-* Uses another method for discovering the country of an ip address. 
+* Uses another method for discovering the country of an ip address.
 
 = 2.0 =
 
@@ -75,6 +98,34 @@ Built by The Marketing Mix Perth: http://www.marketingmix.com.au
 * Initial Commit
 
 == Upgrade notice ==
+
+= 7.1.2 =
+
+* Fixed more bugs caused by debug=true
+
+= 7.1.1 =
+
+* Fixed more bugs caused by debug=true
+
+= 7.1 =
+
+* Fixed up errors from debug=true.
+
+= 7.0 =
+
+* Links to GeoCity 2.0.
+
+= 6.3 =
+
+* Fixed the IP services. Removed IP service list and set it to only use ipcountry.marketingmix.com.au.
+
+= 6.2 =
+
+* Fixed security issue which blocked requests to ipcountry.marketingmix.com.au.
+
+= 6.1 =
+
+* Improved code.
 
 = 6.0 =
 
@@ -102,7 +153,7 @@ Built by The Marketing Mix Perth: http://www.marketingmix.com.au
 
 = 3.0 =
 
-* Uses another method for discovering the country of an ip address. 
+* Uses another method for discovering the country of an ip address.
 
 = 2.0 =
 

@@ -1,4 +1,27 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
+
+function curlCountryFunction($source_url){
+  $ch = curl_init();
+
+  $userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
+  curl_setopt($ch, CURLOPT_USERAGENT,       $userAgent);
+  curl_setopt($ch, CURLOPT_URL,             $source_url);
+  curl_setopt($ch, CURLOPT_HEADER,      false);
+  curl_setopt($ch, CURLOPT_FAILONERROR,     true);
+  curl_setopt($ch, CURLOPT_ENCODING,        "UTF-8" );
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION,  true);
+  curl_setopt($ch, CURLOPT_AUTOREFERER,         true);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER,  true);
+  curl_setopt($ch, CURLOPT_TIMEOUT,             60);
+
+  $html= curl_exec($ch);
+  curl_close($ch);
+  return $html;
+} 
+
 function admin_block_country_get_country_from_ip($ip) {
   // Test Code.
   // $gi = geoip_open(ABSPATH."/wp-content/uploads/GeoLiteCity.dat", GEOIP_STANDARD);
@@ -28,22 +51,10 @@ function admin_block_country_get_country_from_ip($ip) {
       return $countrycode;
     } else {
       // It can't so use an external service.
-      if (get_option("admin_block_country_method") == "" || get_option("admin_block_country_method") == "2") {
-        $temp = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$ip));
-        $_SESSION[$activate_nonce.str_replace(" ", "_", strtolower(get_option("siteurl")))."admin_block_country_code"] = $temp["geoplugin_countryCode"];
-        return $temp["geoplugin_countryCode"];
-      } else if (get_option("admin_block_country_method") == "3") {
-        $code = file_get_contents("http://ipcountry.marketingmix.com.au/?ip=".$ip);
-        $_SESSION[$activate_nonce.str_replace(" ", "_", strtolower(get_option("siteurl")))."admin_block_country_code"] = $code;
-        return  $code;
-      } else if (get_option("admin_block_country_method") == "4") {
-        $content = file_get_contents("http://xml.utrace.de/?query=".$ip);
-        list($a, $b) = explode('<countrycode>', $content);
-        $_SESSION[$activate_nonce.str_replace(" ", "_", strtolower(get_option("siteurl")))."admin_block_country_code"] = substr($b,0,2);;
-        return substr($b,0,2);
-      }
-    }
-    
+      $code = curlCountryFunction("http://ipcountry.marketingmix.com.au/?ip=".$ip);
+      $_SESSION[$activate_nonce.str_replace(" ", "_", strtolower(get_option("siteurl")))."admin_block_country_code"] = $code;
+      return  $code;
+    }    
   }
 }
 
